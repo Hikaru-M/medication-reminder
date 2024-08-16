@@ -9,16 +9,18 @@
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             text-align: center;
-            padding: 20px;
+            padding: 10px;  /* 余白を減らす */
+            margin: 0;
         }
         .container {
             background-color: #fff;
-            padding: 20px;
+            padding: 15px;  /* パディングを調整 */
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 350px;
-            margin: auto;
-            text-align: center; /* 中央揃えに変更 */
+            max-width: 100%;  /* iPhone画面にフィット */
+            margin: 0 auto;  /* 自動的に中央揃え */
+            text-align: center;
+            box-sizing: border-box;  /* パディングを含めた幅を設定 */
         }
         .header {
             font-size: 1.2em;
@@ -26,35 +28,39 @@
         }
         .time {
             font-size: 1.5em;
-            font-weight: bold; /* 太字に変更 */
+            font-weight: bold;
             margin-bottom: 20px;
         }
         .medication-info {
             display: flex;
             align-items: center;
-            justify-content: center; /* 中央揃え */
+            justify-content: center;
             margin-bottom: 20px;
         }
         .medication-info img {
-            width: 60px; /* 写真サイズ調整 */
+            width: 60px;
             height: 60px;
             border-radius: 30px;
             margin-right: 10px;
         }
+        .medication-name {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
         .buttons {
             display: flex;
             justify-content: space-between;
+            gap: 10px;  /* ボタンの間隔を調整 */
         }
         .buttons button {
             flex: 1;
-            margin: 5px;
             padding: 10px;
-            font-size: 1em;
+            font-size: 1.5em;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            background-color: #ADD8E6; /* 薄い青色に変更 */
-            color: #1E90FF; /* 濃い青色の太字に変更 */
+            background-color: #ADD8E6;
+            color: #1E90FF;
             font-weight: bold;
         }
         video {
@@ -74,8 +80,7 @@
         <div class="medication-info">
             <img src="https://github.com/Hikaru-M/medication-reminder/blob/main/capsule-1.jpg?raw=true" alt="薬の画像"> <!-- 薬の写真を変更 -->
             <div>
-                <div>処方薬</div> <!-- 薬の名前を処方薬に変更 -->
-                <div>18:10 に 1錠</div>
+                <div>処方薬 1錠</div>
             </div>
         </div>
         <div class="buttons">
