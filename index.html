@@ -9,20 +9,46 @@
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             text-align: center;
-            padding: 50px;
+            padding: 20px;
         }
         .container {
             background-color: #fff;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
+            max-width: 350px;
             margin: auto;
+            text-align: left;
         }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 10px;
+        .header {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .time {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .medication-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .medication-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .buttons button {
+            flex: 1;
+            margin: 5px;
+            padding: 10px;
+            font-size: 1em;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -37,26 +63,60 @@
         }
         video {
             width: 100%;
-            max-width: 300px;
-            border-radius: 8px;
-            display: block;
+            border-radius: 10px;
+            transform: scaleX(-1); /* 鏡のように反転 */
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>服薬確認ページ</h1>
-        <p>以下の選択肢から選んでください。</p>
-        <!-- ここでカメラ映像を表示 -->
+        <div class="header"></div>
+        <div class="time"></div>
+        <!-- 自己鏡映像 -->
         <video id="cameraStream" autoplay playsinline></video>
-        <br>
-        <button class="medication" onclick="recordAction('服薬')">服薬</button>
-        <button class="skip" onclick="recordAction('スキップ')">スキップ</button>
+        <div class="medication-info">
+            <img src="pill.png" alt="薬の画像">
+            <div>
+                <div>あ</div>
+                <div>18:10 に 1錠</div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="skip" onclick="recordAction('スキップ')">スキップ</button>
+            <button class="medication" onclick="recordAction('服薬')">服薬</button>
+        </div>
     </div>
 
     <script>
+        // 現在の日付と時間を取得して表示する関数
+        function updateDateTime() {
+            const now = new Date();
+
+            // 曜日と月のリスト
+            const weekdays = ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日'];
+            const months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+
+            // 日付と曜日のフォーマット
+            const dayOfWeek = weekdays[now.getDay()];
+            const day = now.getDate();
+            const month = months[now.getMonth()];
+            const year = now.getFullYear();
+
+            // 時間のフォーマット
+            const hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+
+            // 日付と時間をページに表示
+            document.querySelector('.header').textContent = `${month} ${day}日 ${dayOfWeek}`;
+            document.querySelector('.time').textContent = `${hours}:${minutes} の服薬`;
+        }
+
+        // ページが読み込まれたときに日付と時間を表示する
+        window.onload = updateDateTime;
+
         const video = document.getElementById('cameraStream');
-    
+
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({ video: true })
                 .then(function(stream) {
@@ -69,7 +129,11 @@
         } else {
             console.error("このブラウザはカメラをサポートしていません。");
         }
+
+        function recordAction(action) {
+            alert(`${action}が記録されました`);
+            // ここにデータ送信コードを追加
+        }
     </script>
-    
 </body>
 </html>
