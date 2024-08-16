@@ -18,26 +18,27 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 350px;
             margin: auto;
-            text-align: left;
+            text-align: center; /* 中央揃えに変更 */
         }
         .header {
             font-size: 1.2em;
-            font-weight: bold;
             margin-bottom: 10px;
         }
         .time {
             font-size: 1.5em;
+            font-weight: bold; /* 太字に変更 */
             margin-bottom: 20px;
         }
         .medication-info {
             display: flex;
             align-items: center;
+            justify-content: center; /* 中央揃え */
             margin-bottom: 20px;
         }
         .medication-info img {
-            width: 40px;
-            height: 40px;
-            border-radius: 20px;
+            width: 60px; /* 写真サイズ調整 */
+            height: 60px;
+            border-radius: 30px;
             margin-right: 10px;
         }
         .buttons {
@@ -52,14 +53,9 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-        }
-        .medication {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .skip {
-            background-color: #f44336;
-            color: white;
+            background-color: #ADD8E6; /* 薄い青色に変更 */
+            color: #1E90FF; /* 濃い青色の太字に変更 */
+            font-weight: bold;
         }
         video {
             width: 100%;
@@ -76,15 +72,15 @@
         <!-- 自己鏡映像 -->
         <video id="cameraStream" autoplay playsinline></video>
         <div class="medication-info">
-            <img src="pill.png" alt="薬の画像">
+            <img src="img_2524_480.jpg" alt="薬の画像"> <!-- 薬の写真を変更 -->
             <div>
-                <div>あ</div>
+                <div>処方薬</div> <!-- 薬の名前を処方薬に変更 -->
                 <div>18:10 に 1錠</div>
             </div>
         </div>
         <div class="buttons">
-            <button class="skip" onclick="recordAction('スキップ')">スキップ</button>
-            <button class="medication" onclick="recordAction('服薬')">服薬</button>
+            <button onclick="recordAction('スキップ')">スキップ</button>
+            <button onclick="recordAction('服薬')">服薬</button>
         </div>
     </div>
 
