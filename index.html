@@ -47,6 +47,10 @@
             font-weight: bold;
             font-size: 1.2em;
         }
+        .medication-dosage {
+            font-weight: bold; /* 太文字 */
+            font-size: 1.2em;  /* 少し大きく */
+        }
         .buttons {
             display: flex;
             justify-content: space-between;
@@ -79,9 +83,7 @@
         <video id="cameraStream" autoplay playsinline></video>
         <div class="medication-info">
             <img src="https://github.com/Hikaru-M/medication-reminder/blob/main/capsule-1.jpg?raw=true" alt="薬の画像"> <!-- 薬の写真を変更 -->
-            <div>
-                <div>処方薬 1錠</div>
-            </div>
+            <div class="medication-dosage">処方薬 1錠</div> <!-- 処方薬 1錠を太文字で少し大きく -->
         </div>
         <div class="buttons">
             <button onclick="recordAction('スキップ')">スキップ</button>
