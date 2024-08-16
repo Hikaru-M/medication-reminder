@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             text-align: center;
-            padding: 10px 10px 40px;  /* 下部の余白を少し減らす */
+            padding: 10px 10px 30px;  /* 下部の余白をさらに減らす */
             margin: 0;
         }
         .container {
@@ -29,13 +29,13 @@
         .time {
             font-size: 1.5em;
             font-weight: bold;
-            margin-bottom: 16px;  /* マージンを少し減らす */
+            margin-bottom: 10px;  /* マージンをさらに減らす */
         }
         .medication-info {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 16px;  /* マージンを少し減らす */
+            margin-bottom: 10px;  /* マージンをさらに減らす */
         }
         .medication-info img {
             width: 60px;
@@ -49,12 +49,13 @@
         }
         .medication-dosage {
             font-weight: bold; /* 太文字 */
-            font-size: 1.2em;  /* 少し大きく */
+            font-size: 1.5em;  /* 少し大きく */
         }
         .buttons {
             display: flex;
             justify-content: space-between;
             gap: 8px;  /* ボタンの間隔を少し狭く */
+            margin-top: 10px;  /* 上下の隙間を減らす */
         }
         .buttons button {
             flex: 1;
@@ -71,7 +72,7 @@
             width: 100%;
             border-radius: 10px;
             transform: scaleX(-1); /* 鏡のように反転 */
-            margin-bottom: 20px;  /* 元の高さに戻しました */
+            margin-bottom: 10px;  /* マージンをさらに減らす */
         }
     </style>
 </head>
@@ -82,8 +83,8 @@
         <!-- 自己鏡映像 -->
         <video id="cameraStream" autoplay playsinline></video>
         <div class="medication-info">
-            <img src="https://github.com/Hikaru-M/medication-reminder/blob/main/capsule-1.jpg?raw=true" alt="薬の画像"> <!-- 薬の写真を変更 -->
-            <div class="medication-dosage">処方薬 1錠</div> <!-- 処方薬 1錠を太文字で少し大きく -->
+            <img src="https://github.com/Hikaru-M/medication-reminder/blob/main/capsule-1.jpg?raw=true" alt="薬の画像">
+            <div class="medication-dosage">処方薬 1錠</div>
         </div>
         <div class="buttons">
             <button onclick="recordAction('スキップ')">スキップ</button>
@@ -110,10 +111,6 @@
             const minutes = now.getMinutes().toString().padStart(2, '0');
             const period = (hours >= 5 && hours < 12) ? '朝' :
                            (hours >= 12 && hours < 18) ? '昼' : '夜';
-
-            // 24時間形式から12時間形式に変換する場合（必要に応じてコメントを外す）
-            // const periodSuffix = hours >= 12 ? 'PM' : 'AM';
-            // hours = hours % 12 || 12;
 
             // 日付と時間をページに表示
             document.querySelector('.header').textContent = `${month} ${day}日 ${dayOfWeek}`;
