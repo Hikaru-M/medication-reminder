@@ -9,53 +9,49 @@
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             text-align: center;
-            padding: 10px 10px 30px;  /* 下部の余白をさらに減らす */
+            padding: 10px 10px 30px;
             margin: 0;
         }
         .container {
             background-color: #fff;
-            padding: 8px;  /* パディングを減らして上に詰める */
+            padding: 8px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 100%;  /* iPhone画面にフィット */
-            margin: 0 auto;  /* 自動的に中央揃え */
+            max-width: 100%;
+            margin: 0 auto;
             text-align: center;
-            box-sizing: border-box;  /* パディングを含めた幅を設定 */
+            box-sizing: border-box;
         }
         .header {
             font-size: 1.2em;
-            margin-bottom: 4px;  /* マージンをさらに狭く */
+            margin-bottom: 4px;
         }
         .time {
             font-size: 1.5em;
             font-weight: bold;
-            margin-bottom: 8px;  /* マージンをさらに狭く */
+            margin-bottom: 8px;
         }
         .medication-info {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 8px;  /* マージンをさらに狭く */
+            margin-bottom: 8px;
         }
         .medication-info img {
             width: 60px;
             height: 60px;
             border-radius: 30px;
-            margin-right: 6px;  /* マージンをさらに狭く */
-        }
-        .medication-name {
-            font-weight: bold;
-            font-size: 1.2em;
+            margin-right: 6px;
         }
         .medication-dosage {
-            font-weight: bold; /* 太文字 */
-            font-size: 1.2em;  /* 少し大きく */
+            font-weight: bold;
+            font-size: 1.2em;
         }
         .buttons {
             display: flex;
             justify-content: space-between;
-            gap: 6px;  /* ボタンの間隔をさらに狭く */
-            margin-top: 8px;  /* 上下の隙間をさらに減らす */
+            gap: 6px;
+            margin-top: 8px;
         }
         .buttons button {
             flex: 1;
@@ -70,9 +66,11 @@
         }
         video {
             width: 100%;
+            height: 180px;  /* 映像の高さを設定 */
             border-radius: 10px;
             transform: scaleX(-1); /* 鏡のように反転 */
-            margin-bottom: 8px;  /* マージンをさらに狭く */
+            object-fit: cover;  /* 映像のクロップ */
+            margin-bottom: 8px;
         }
     </style>
 </head>
@@ -93,31 +91,24 @@
     </div>
 
     <script>
-        // 現在の日付と時間を取得し、表示を更新する関数
         function updateDateTime() {
             const now = new Date();
-
-            // 曜日と月のリスト
             const weekdays = ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日'];
             const months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
 
-            // 日付と曜日のフォーマット
             const dayOfWeek = weekdays[now.getDay()];
             const day = now.getDate();
             const month = months[now.getMonth()];
 
-            // 時間のフォーマット
             let hours = now.getHours();
             const minutes = now.getMinutes().toString().padStart(2, '0');
             const period = (hours >= 5 && hours < 12) ? '朝' :
                            (hours >= 12 && hours < 18) ? '昼' : '夜';
 
-            // 日付と時間をページに表示
             document.querySelector('.header').textContent = `${month} ${day}日 ${dayOfWeek}`;
             document.querySelector('.time').textContent = `${period}：${hours}:${minutes} の服薬`;
         }
 
-        // ページが読み込まれたときに日付と時間を表示する
         window.onload = updateDateTime;
 
         const video = document.getElementById('cameraStream');
